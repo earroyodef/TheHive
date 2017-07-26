@@ -18,17 +18,28 @@ def delete_case(config):
     else:
         print >> sys.stderr, ('ERROR Status Code: {} Message: {}'.format(response.status_code, response.text))
 
-    LoC2D = []#List of Cases 2 Delete
-    #Run a loop to add all every caseId to LoC2D
+    LoTC = []#List of Cases that are Test Cases
+    #Run a loop to add all every test case to LoTC
     count = 0
     while count < len(LoC):
-        for i in LOC:
-            if i == 'caseId':
-                LoC2D.append(LOC[0]['caseId'])
+        for i in LOC[count]:
+            if i == 'tags':
+                if LoC[count]['tags'] = ['TEST']:
+                    LoTC.append(LOC[0]['caseId'])
             else:
                 conitnue
             continue += 1
-    
+    LoC2D = []#List of Cases 2 Delete
+    #Run a loop to add all every test case's caseId to LoC2D
+    count = 0
+    while count < len(LoC):
+      for i in LOC:
+        if i == 'caseId':
+          LoC2D.append(LOC[0]['caseId'])
+        else:
+          conitnue
+        count += 1
+
     del_case_url = url + "/%s" % (case_id_del) # DELETE URI
 
     response = requests.delete(del_case_url, headers=headers, auth=auth, verify=False)
