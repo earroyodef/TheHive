@@ -12,7 +12,7 @@ def delete_case(config):
     password = config.get('password') # Get TheHive password from Splunk configuration
     auth = requests.auth.HTTPBasicAuth(username=username,password=password) # Generate basic auth key
 
-    case_id = "" # Enter case ID here
+    case_id_del = "" # Enter case ID(s) here, different variable than case_id
     del_case_url = url + "/%s" % (case_id) # DELETE URI
 
     response = requests.delete(del_case_url, headers=headers, auth=auth, verify=False)
