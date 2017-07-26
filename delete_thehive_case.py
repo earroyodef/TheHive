@@ -32,8 +32,8 @@ def delete_case(config):
     LoC2D = []#List of Cases 2 Delete
     #Run a loop to add all every test case's caseId to LoC2D
     count = 0
-    while count < len(LoC):
-      for i in LOC:
+    while count < len(LoTC):
+      for i in LoTC:
         if i == 'caseId':
           LoC2D.append(LOC[0]['caseId'])
         else:
