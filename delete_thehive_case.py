@@ -11,15 +11,24 @@ def delete_case(config):
     username = config.get('username') # Get TheHive username from Splunk configuration
     password = config.get('password') # Get TheHive password from Splunk configuration
     auth = requests.auth.HTTPBasicAuth(username=username,password=password) # Generate basic auth key
-    list_of_cases = requests.get(url, headers=headers, auth=auth, verify=False) #Not sure what this outputs but should pull list of cases
+    LoC = requests.get(url, headers=headers, auth=auth, verify=False) #List of Cases
     if response.status_code == 201:
-        print >> sys.stderr, (json.dumps(list_of_cases.json(), indent=4, sort_keys=True))
+        print >> sys.stderr, (json.dumps(LoC.json(), indent=4, sort_keys=True))
         print >> sys.stderr, ('')
     else:
         print >> sys.stderr, ('ERROR Status Code: {} Message: {}'.format(response.status_code, response.text))
-    #Then some how make a list of all test cases
-    #Run a loop to delete all the cases in that list or dictionary.
-    case_id_del = "" # Enter case ID(s) here, different variable than case_id
+
+    LoC2D = []#List of Cases 2 Delete
+    #Run a loop to add all every caseId to LoC2D
+    count = 0
+    while count < len(LoC):
+        for i in LOC:
+            if i == 'caseId':
+                LoC2D.append(LOC[0]['caseId'])
+            else:
+                conitnue
+            continue += 1
+    
     del_case_url = url + "/%s" % (case_id_del) # DELETE URI
 
     response = requests.delete(del_case_url, headers=headers, auth=auth, verify=False)
