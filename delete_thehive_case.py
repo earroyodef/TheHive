@@ -15,6 +15,8 @@ def delete_case(config):
     if response.status_code == 201:
         print >> sys.stderr, (json.dumps(list_of_cases.json(), indent=4, sort_keys=True))
         print >> sys.stderr, ('')
+    else:
+        print >> sys.stderr, ('ERROR Status Code: {} Message: {}'.format(response.status_code, response.text))
     #Then some how make a list of all test cases
     #Run a loop to delete all the cases in that list or dictionary.
     case_id_del = "" # Enter case ID(s) here, different variable than case_id
