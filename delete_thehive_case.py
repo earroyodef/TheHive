@@ -17,7 +17,7 @@ def delete_case(config):
         print >> sys.stderr, ('')
     else:
         print >> sys.stderr, ('ERROR Status Code: {} Message: {}'.format(response.status_code, response.text))
-    false = 'false' #Would crash becasue gives a NameError: name 'false' is not defined
+    false = 'false' #Would crash becasue gives a NameError: name 'false' is not defined, so we define it
     LoTC = []#List of Cases that are Test Cases
     #Run a loop to add all every test case to LoTC
     count = 0
@@ -25,7 +25,7 @@ def delete_case(config):
         for i in LOC[count]:
             if i == 'tags':
                 if LoC[count]['tags'] = ['TEST']:
-                    LoTC.append(LOC[0]['caseId'])
+                    LoTC.append(LOC[count]['caseId'])
             else:
                 conitnue
             continue += 1
