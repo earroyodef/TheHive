@@ -39,15 +39,18 @@ def delete_case(config):
         else:
           conitnue
         count += 1
-
-    del_case_url = url + "/%s" % (case_id_del) # DELETE URI
-
-    response = requests.delete(del_case_url, headers=headers, auth=auth, verify=False)
-    if response.status_code == 201:
-        print >> sys.stderr, (json.dumps(response.json(), indent=4, sort_keys=True))
-        print >> sys.stderr, ('')
-    else:
-        print >> sys.stderr, ('ERROR Status Code: {} Message: {}'.format(response.status_code, response.text))
+    #While loop that will delte each case in LoC2D
+    count = 0
+    while count < len(LoC2D):
+        for i in LoC2D:
+            del_case_url = url + "/%s" % (i) # DELETE URI
+            response = requests.delete(del_case_url, headers=headers, auth=auth, verify=False)
+            if response.status_code == 201:
+                print >> sys.stderr, (json.dumps(response.json(), indent=4, sort_keys=True))
+                print >> sys.stderr, ('')
+            else:
+                print >> sys.stderr, ('ERROR Status Code: {} Message: {}'.format(response.status_code, response.text))
+        count +=1
 
 
 if __name__ == "__main__":
