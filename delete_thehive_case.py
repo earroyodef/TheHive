@@ -30,7 +30,7 @@ def delete_case(config):
                 conitnue
             continue += 1
     LoC2D = []#List of Cases 2 Delete
-    #Run a loop to add all every test case's caseId to LoC2D
+    #Run a loop to add every test case's caseId to LoC2D
     count = 0
     while count < len(LoTC):
       for i in LoTC[count]:
